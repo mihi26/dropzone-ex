@@ -64,10 +64,10 @@ export default {
       this.selectedFilesState.splice(indexFile, 1);
     },
     scrollLeft() {
-      this.$refs.files.scrollLeft += 140;
+      this.$refs.files.scrollLeft += 244;
     },
     scrollRight() {
-      this.$refs.files.scrollLeft -= 140;
+      this.$refs.files.scrollLeft -= 244;
     },
   },
   computed: {

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex rounded-[3px] border-light-grey border-[1px] w-secondary h-secondary"
+    class="flex rounded-[3px] border-light-grey border-[1px] h-secondary min-w-[244px]"
   >
     <img :src="'/src/assets/' + imgUrl" class="w-8 h-8 max-w-none m-2" />
     <div class="flex flex-col">
