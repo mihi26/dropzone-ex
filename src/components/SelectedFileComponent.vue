@@ -2,7 +2,28 @@
   <div
     class="flex rounded-[3px] border-light-grey border-[1px] h-secondary min-w-[244px]"
   >
-    <img :src="'/src/assets/' + imgUrl" class="w-8 h-8 max-w-none m-2" />
+    <img
+      v-if="
+        getType ===
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+      "
+      src="../assets/excel.svg"
+      class="w-8 h-8 max-w-none m-2"
+    />
+    <img
+      v-else-if="
+        getType ===
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      "
+      src="../assets/word.svg"
+      class="w-8 h-8 max-w-none m-2"
+    />
+    <img
+      v-else-if="getType === 'application/pdf'"
+      src="../assets/pdf.svg"
+      class="w-8 h-8 max-w-none m-2"
+    />
+    <img v-else src="../assets/file.svg" class="w-8 h-8 max-w-none m-2" />
     <div class="flex flex-col">
       <div
         class="font-bold font-primary text-xs pt-2 inline truncate max-w-[150px]"
@@ -22,11 +43,6 @@
 <script>
 export default {
   name: "SelectedFileComponent",
-  data() {
-    return {
-      imgUrl: "file.svg",
-    };
-  },
   props: {
     title: {
       type: String,
@@ -65,21 +81,9 @@ export default {
         parseFloat((this.size / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i]
       );
     },
-  },
-  mounted() {
-    switch (this.type) {
-      case "application/pdf":
-        this.imgUrl = "pdf.svg";
-        break;
-      case "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
-        this.imgUrl = "word.svg";
-        break;
-      case "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet":
-        this.imgUrl = "excel.svg";
-        break;
-      default:
-        break;
-    }
+    getType() {
+      return this.type;
+    },
   },
 };
 </script>
